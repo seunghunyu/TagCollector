@@ -10,6 +10,11 @@ public class MainController {
     @RequestMapping("/home")
     public String home(){
         System.out.println("home");
-        return "index.html";
+        return "home";
+    }
+    @RequestMapping("/template")
+    public String template(){
+        System.out.println("template");
+        return "index";
     }
 }
