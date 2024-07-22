@@ -36,7 +36,90 @@
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
     g.async=true; g.src='http://192.168.20.64/piwik/js/container_clKrVEUb.js'; s.parentNode.insertBefore(g,s);
   </script>-->
-  <script src="js/matomo_snippet.js"></script>
+  <!--script>
+  var _mtm = window._mtm = window._mtm || [];
+  _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+  g.async=true; g.src='http://192.168.20.58:81/TagManager/container_B940WNfK.js'; s.parentNode.insertBefore(g,s);
+  </script-->
+<!--  <script src="js/matomo_snippet_nginx.js"></script>-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+     $(document).ready(function() {
+            $('#getTokenLink').click(function(event) {
+
+                console.log('getTokenLink click !!!!')
+
+                event.preventDefault(); // 기본 링크 클릭 이벤트 방지
+
+                const jwtCookie = getCookie("JWT");
+
+                $.ajax({
+                    url: /*[[@{/your-post-endpoint}]]*/ '/getTokenInfo', // POST 요청을 보낼 URL
+                    type: 'POST',
+                    data: {
+                        //yourParamName: 'yourParamValue' // 요청 데이터
+                    },
+                    success: function(response) {
+                        alert('Response: ' + response); // 서버의 응답 처리
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Error: ' + error); // 에러 처리
+                    }
+                });
+            });
+
+            $('#minimalStyle').click(function(event) {
+
+                console.log('minimalStyle click !!!!')
+
+                event.preventDefault(); // 기본 링크 클릭 이벤트 방지
+
+                const jwtCookie = getCookie("JWT");
+
+                console.log('cookie' + jwtCookie);
+
+
+               //yourParamName: 'yourParamValue' // 요청 데이터
+                var authTokenInfo = JSON.stringify({
+                        userId:'yush',
+                        userName:'yu seung hun',
+                        password:'obzcom'
+                });
+
+                console.log('authTokenInfo' + authTokenInfo);
+                $.ajax({
+                    //'https://192.168.24.136:8888/api/validate', // POST 요청을 보낼 URL
+                    url: /*[[@{/your-post-endpoint}]]*/ 'https://192.168.24.136:8080/validate', // POST 요청을 보낼 URL
+                    type: 'POST',
+                    dataType: 'json',
+                    contentType: 'application/json; charset=utf-8',
+<!--                    headers:{-->
+<!--                       //'Authorization': 'Bearer ' + jwtCookie // 쿠키를 헤더에 추가-->
+<!--                    },-->
+                    data: authTokenInfo,
+                    success: function(response) {
+                        alert('Response: ' + response); // 서버의 응답 처리
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Error: ' + error); // 에러 처리
+                    }
+                });
+            });
+            // 쿠키 값을 가져오는 함수
+            function getCookie(name) {
+
+                let cookieArr = document.cookie.split(";");
+                for (let i = 0; i < cookieArr.length; i++) {
+                    let cookiePair = cookieArr[i].split("=");
+                    if (name === cookiePair[0].trim()) {
+                        return decodeURIComponent(cookiePair[1]); // 쿠키 값 리턴
+                    }
+                }
+                return null; // 쿠키가 없으면 null 리턴
+            }
+        });
+  </script>
 </head>
 <body>
   <div class="lines-wrap">
@@ -60,8 +143,8 @@
   <nav class="site-nav">
     <div class="container">
       <div class="site-navigation">
-        <a href="index.html" class="logo float-left m-0">Style <span class="text-primary">.</span></a>
-
+        <!--<a href="index.html" class="logo float-left m-0">Style <span class="text-primary">.</span></a>-->
+        <a href="#" id="getTokenLink" class="logo float-left m-0">Style <span class="text-primary">.</span></a>
         <ul class="js-clone-nav d-none d-lg-inline-noone text-left site-menu">
           <li class="active"><a href="index.html">Home</a></li>
           <li class="has-children">
@@ -103,7 +186,7 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-6">
-          <h1 class="hero-heading">Minimal Style Collection &mdash; 2023</h1>
+          <h1 id="minimalStyle" class="hero-heading">Minimal Style Collection &mdash; 2023</h1>
           <div  class="line js-line mx-auto mb-3 my-3"></div>
           <p class="sub-text">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
         </div>
@@ -121,7 +204,7 @@
             <div data-jarallax-element="-100" class="jarallax">
               <h2>Minimal Design</h2>
               <span class="d-inline-block">Minimalist Design</span>
-              <img src="images/img_v_2-min.jpg" alt="Image" class="img-fluid my-3 my-lg-5">
+              <img src="https://192.168.24.136:8443/images/img_v_2-min.jpg" alt="Image" class="img-fluid my-3 my-lg-5">
               <p class="line-top fig-2-text mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
             </div>
           </div>
