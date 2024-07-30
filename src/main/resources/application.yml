@@ -1,0 +1,31 @@
+server:
+  max-http-header-size: 1000000
+  port: 8443
+  ssl:
+    key-store: keystore.p12
+    key-store-password: obzcom
+    key-store-type: PKCS12
+    key-alias: obzen
+
+
+spring:
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: 'true'
+  crm:
+    datasource:
+      hikari:
+        driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+        url: jdbc:log4jdbc:oracle:thin:@192.168.20.47:1521:OBZMETA
+        usernmae: ECUBE
+        password: ECUBE
+    jpa:
+      generate-ddl: 'true'
+      hibernate:
+        ddl-auto: create
+      properties:
+        hibernate:
+          #  show_sql: true
+          format_sql: true
+          use_sql_comments: true # sql 과 함께 jpql 주석처리되어  콘솔창에 출력

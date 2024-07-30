@@ -19,7 +19,7 @@ public class WebSecurityConfig {
       @Bean
       public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
           http.authorizeHttpRequests()
-                  .antMatchers("/","/login","/register","/logout","/css/**","/js/**","/images/**").permitAll()   //특정 URL 경로 패턴과 일치하는 요청에 대한 접근 권한을 설정   Pattern에 적힌 경로는 인증 필요없다는 의미
+                  .antMatchers("/","/login","/register","/logout","/css/**","/js/**","/images/**","/fonts/**","/scss/**","/h2-console/**").permitAll()   //특정 URL 경로 패턴과 일치하는 요청에 대한 접근 권한을 설정   Pattern에 적힌 경로는 인증 필요없다는 의미
                   .anyRequest().authenticated()                                                      //위의 패턴을 제외한 모든 경로에 대한 인증을 요구
                   .and()
               .formLogin()    //기본 로그인 폼을 사용하도록 설정
@@ -27,7 +27,10 @@ public class WebSecurityConfig {
                   .permitAll() //인증없이 로그인 폼 경로 접근 가능
                   .and()
               .logout() // 로그아웃 기능 허용 -> 인증 없이 로그아웃 URL 접근하여 로그아웃 할 수 있음
-                  .permitAll();
+                  .permitAll()
+                  .and()
+                  .csrf().disable() // H2 콘솔을 사용하려면 CSRF 비활성화
+                  .headers().frameOptions().sameOrigin(); // H2 콘솔을 사용하기 위한 설정
 
           //Force HTTPS
           http.requiresChannel()      //특정 채널(예: HTTPS)을 요구하는 설정입니다.

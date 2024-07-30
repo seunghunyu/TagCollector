@@ -5,8 +5,8 @@
 * License: https://creativecommons.org/licenses/by/3.0/
 */ -->
 <!doctype html>
-<html lang="en">
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<html lang="en">-->
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -31,6 +31,9 @@
   <link rel="stylesheet" href="css/style.css">
 
   <title>Style Free HTML Template by Untree.co</title>
+  <script>
+    alert('register');
+  </script>
   <!--
   <script>
   var _mtm = window._mtm = window._mtm || [];
@@ -123,18 +126,33 @@
           <form action="/join" method="post">
             <div class="form-group">
               <label class="text-black" for="userId">Id</label>
-              <input type="text" class="form-control" id="userId">
+              <input type="text" class="form-control" id="userId" >
             </div>
             <div class="form-group">
               <label class="text-black" for="userName">Name </label>
-              <input type="text" class="form-control" id="userName">
+              <input type="text" class="form-control" id="userName" >
             </div>
             <div class="form-group">
               <label class="text-black" for="password">Password</label>
-              <input type="password" class="form-control" id="password">
+              <input type="password" class="form-control" id="password" >
             </div>
             <button type="submit" class="btn btn-primary">회원가입</button>
           </form>
+<!--          <form th:action="@{/join}" th:object="${UserInfo}" method="post">-->
+<!--            <div class="form-group">-->
+<!--              <label class="text-black" for="userId">Id</label>-->
+<!--              <input type="text" class="form-control" id="userId" th:field="*{userId}">-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--              <label class="text-black" for="userName">Name </label>-->
+<!--              <input type="text" class="form-control" id="userName" th:field="*{userName}">-->
+<!--            </div>-->
+<!--            <div class="form-group">-->
+<!--              <label class="text-black" for="password">Password</label>-->
+<!--              <input type="password" class="form-control" id="password" th:field="*{contents}">-->
+<!--            </div>-->
+<!--            <button type="submit" class="btn btn-primary">회원가입</button>-->
+<!--          </form>-->
         </div>
       </div>
     </div>
