@@ -7,6 +7,10 @@ server:
     key-store-type: PKCS12
     key-alias: obzen
 
+jwt:
+  expiration_time: 300000
+  secret: VlwEyVBsYt9V7zq57TejMnVUyzblYcfPQye08f7MGVA9XkHa
+
 spring:
   mvc:
     hiddenmethod:

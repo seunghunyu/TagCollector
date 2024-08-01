@@ -33,6 +33,9 @@ dependencies {
 	implementation group: 'com.oracle.ojdbc', name: 'orai18n', version: '19.3.0.0'
 	implementation group: 'org.bgee.log4jdbc-log4j2', name:'log4jdbc-log4j2-jdbc4.1', version: '1.16'
 
+	//WebClient 
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
 	runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
 	runtimeOnly 'com.h2database:h2'
 
