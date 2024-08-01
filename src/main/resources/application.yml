@@ -7,7 +7,6 @@ server:
     key-store-type: PKCS12
     key-alias: obzen
 
-
 spring:
   mvc:
     hiddenmethod:
@@ -17,9 +16,10 @@ spring:
     datasource:
       hikari:
         driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-        url: jdbc:log4jdbc:oracle:thin:@192.168.20.47:1521:OBZMETA
-        usernmae: ECUBE
-        password: ECUBE
+        jdbc-url: jdbc:log4jdbc:oracle:thin:@192.168.20.47:1521:OBZMETA
+        username: ECUBE2
+        password: ECUBE2
+
     jpa:
       generate-ddl: 'true'
       hibernate:
